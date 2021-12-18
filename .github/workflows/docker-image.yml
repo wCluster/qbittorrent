@@ -18,7 +18,6 @@ jobs:
     - name: Build the Docker image
       run: |
         echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin registry.hub.docker.com
-        docker build -t qbittorrent:latest .
-        docker tag qbittorrent:latest wzhone/qbittorrent:latest
-        docker push wzhone/qbittorrent:latest
+        docker build -t registry.hub.docker.com/wzhone/qbittorrent:latest .
+        docker push registry.hub.docker.com/wzhone/qbittorrent:latest
         
