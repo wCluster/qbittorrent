@@ -15,6 +15,7 @@ RUN mkdir -p /root/.config/qBittorrent/
 COPY qBittorrent.conf /root/.config/qBittorrent/qBittorrent.conf
 
 COPY entry.sh /entry.sh
+RUN chmod 777 /entry.sh
 ENTRYPOINT ["/entry.sh"]
 
 COPY --from=prepare /qbittorrent-nox /
