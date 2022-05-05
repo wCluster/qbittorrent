@@ -1,24 +1,21 @@
-name: Docker Image CI
+name: Build 
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  workflow_dispatch:
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    
     steps:
-        
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    
+
+    - name: Build & Push Docker
       run: |
-        echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin registry.hub.docker.com
-        docker build -t registry.hub.docker.com/wzhone/qbittorrent:latest .
-        docker push registry.hub.docker.com/wzhone/qbittorrent:latest
-        
+        docker login ${{ secrets.REGISTRY }}
+        docker build -t cls.im/utility/qbittorrent:latest .
+        docker push cls.im/utility/qbittorrent:latest
