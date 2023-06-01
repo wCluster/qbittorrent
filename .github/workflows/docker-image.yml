@@ -20,5 +20,5 @@ jobs:
     - name: Build & Push Docker
       run: |
         docker login ${{ secrets.REGISTRY }}
-        docker build -t cls.im/utility/qbittorrent:latest .
-        docker push cls.im/utility/qbittorrent:latest
+        docker build -t wzhone/qbittorrent:latest .
+        docker push wzhone/qbittorrent:latest
