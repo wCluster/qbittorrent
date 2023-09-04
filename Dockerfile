@@ -2,7 +2,8 @@
 FROM alpine:latest AS prepare
 
 WORKDIR /
-RUN wget -O q.zip https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-4.4.2.10/qbittorrent-enhanced-nox_x86_64-linux-musl_static.zip
+RUN apk add curl wget
+RUN curl https://api.github.com/repos/c0re100/qBittorrent-Enhanced-Edition/releases/latest | grep "/qbittorrent-enhanced-nox_x86_64-linux-musl_static.zip" | cut -d : -f 2,3 | tr -d \" | wget -qi - -O q.zip
 RUN unzip q.zip 
 
 # 第二重阶段：准备环境
